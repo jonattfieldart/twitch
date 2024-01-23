@@ -1,9 +1,8 @@
 !wrestle $(eval
 const moves = [
-
     "Executed a powerful Body Slam, lifting their opponent high in the air before slamming them forcefully to the mat",
     "Successfully performed a Suplex, grasping their opponent and throwing them backward, letting gravity do the rest",
-    "delivered a devastating DDT, grabbing their opponent's head and swiftly dropping them headfirst into the canvas",
+    "Delivered a devastating DDT, grabbing their opponent's head and swiftly dropping them headfirst into the canvas",
     "Surprised their opponent with a well-executed Dropkick, leaping into the air and striking them with both feet",
     "Connected with a vicious Clothesline, extending their arm and delivering a powerful hit to their opponent's neck",
     "Demonstrated strength by hoisting their opponent onto their shoulders and executing a Powerbomb, slamming them backward with impactful force",
@@ -11,87 +10,46 @@ const moves = [
     "Gripped their opponent's throat with authority, delivering a successful Chokeslam and lifting them off the ground before crashing them down",
     "Successfully executed a daring Piledriver, turning their opponent upside down and driving their head into the mat",
     "Targeted their opponent's spine with precision, lifting and slamming them down with a Spinebuster, impacting their back on their knee",
-    "Skillfully performed a Hurricanrana, wrapping their legs around their opponent's neck and using their body weight to flip them over",
-    "Connected with the back of their opponent's head using an Enzuigiri, showcasing agility and surprising them",
-    "Charged at their opponent and executed a successful Bulldog, leaping and driving their face into the mat with momentum",
-    "Overpowered their opponent, lifting and dropping them across their knee or shoulder with a Backbreaker",
-    "Leaped from the turnbuckle and successfully landed an Elbow Drop onto their opponent, showcasing aerial skills",
-    "Caught their opponent off guard with a powerful Superkick, connecting with a high-impact kick to their face",
-    "Spearheaded their opponent with determination, driving their shoulder into their midsection for a successful Spear",
-    "Leaped backward from the top turnbuckle and successfully landed a Moonsault onto their opponent, leaving them stunned",
-    "Twisted their opponent's neck with precision, forcefully snapping them into a Neckbreaker and driving them to the mat",
-    "Applied technical prowess by entwining their legs with their opponent's in a Figure-Four Leglock, applying pressure on their legs and knee",
-    "Showcased submission skills with a successful Sharpshooter, turning their opponent onto their stomach and applying pressure on their legs",
-    "Locked their arms around their opponent's face with precision, pulling backward for a successful Crossface and applying intense pressure",
-    "Utilized the ropes for momentum and executed a successful Springboard Splash, surprising their opponent with a mid-air attack",
-    "Leaped from the top turnbuckle and successfully landed a body splash on their opponent with a Frog Splash",
-    "Dizzied their opponent with a Tornado DDT, spinning them into a DDT with both of them rotating in mid-air",
-    "Demonstrated agility and executed a successful Rolling Thunder, performing a rolling somersault senton onto their opponent",
-    "Lifted their opponent and successfully performed an Atomic Drop, dropping them groin-first onto their knee",
-    "Executed a successful Fisherman Suplex, lifting their opponent with a leg-hook and bridging for the pin",
-    "Left their opponent reeling with a successful Knee Trembler, connecting with a powerful knee strike to their face",
-    "Demonstrated strength by lifting their opponent onto their shoulders and successfully slamming them to the mat in a Samoan drop",
-  ];
+    // ... (other moves)
+];
 
-  const outcomes = [
+const outcomes = [
     "the crowd roars in approval as $(target) struggles to get up.",
     "but its unsuccessful! The crowd gasps as $(target) counters, gaining the upper hand.",
-    "nailed it! The cheers echo through the arena as $(target) writhes in pain.",
-    "whiffed it! The disappointment in the crowd is palpable as $(target) evades the move.",
-    "but $(target) escaped unscathed! The audience is on the edge of their seats!",
-    "what a move! Cheers fill the air as $(target) struggles to recover.",
-    "by gawd! $(target) is broken in half!",
-    "the crowd are going wild, chanting their name!",
-    "to a complete lack or reaction from the crowd, looks like they need to raise their game.",
-    "but $(target) countered with a reversal!",
-    "but $(target) countered with a reversal... Which is reversed again by $(user), Incredible!",
-    "they go for a pin, 1... 2... $(target) kicked out!", 
-    "they go for a pin, 1... but $(target) powers out!",
-    "they go for a pin, 1... 2... 3 - no wait $(target) has their foot on the ropes",
-    "they celebrate, but then $(target) sneaks behind them for a quick roll up pin, 1... 2... $(user) kicks out, that was close!",
-    "suddenly the lights go out! They come back on and $(target) is standing behind them, unbelievable!
-    "they quickly snap on an ankle lock, $(target) screams out in pain, their hand raises up... and grabs the rope to break the hold!",
-  ];
+    // ... (other outcomes)
+];
 
-  const specialOutcomes = [
-    "they go for a pin, 1... 2... 3! Its over, ref calls for the bell!",
-    "they quickly snap on an ankle lock, $(target) screams out in pain, their hand raises up... and taps out!",
-    "$(target) has had enough! Grabs a steel chair, WHAM!, refs calls for a disqualification!",
-    "in a flash, they transition into an armbar, $(target) is in agony and quickly taps out! Its over.",
-    "they quickly snap on an ankle lock, $(target) screams out in pain, their hand raises up... and taps out!",
-    "wait, they have pulled out some hidden brass knuckles and knocked out $(target), the ref didnt see it, 1... 2... 3!",
-    "$(target) is out cold, $(user) towers over them and taunts with one foot on top of them, 1.. 2.. 3!",
-    "$(target) goes for a strike but $(user) ducks underneath and applies a sleeper hold, $(user) is fading, the ref lifts their arm up, its drops and he calls for the bell!",
-  ];
+const specialOutcomes = [
+    // ... (other special outcomes)
+];
 
-  // Wrestling ring announcer introduction
-  const introduction = "Fight fans, welcome to the epic showdown between $(user) and $(target) Ring the bell!";
+const introduction = "Fight fans, welcome to the epic showdown between $(user) and $(target)! Ring the bell!";
 
-  // Check if target (opponent) is still in chat
-  if (target && target.isOnline) {
-    // Initialize user data for the two users
+if (target && target.isOnline) {
     const user1Data = user1.userData || { moveCount: 0 };
     const user2Data = user2.userData || { moveCount: 0 };
 
-    // Update move count for the users
     user1.userData = { moveCount: user1Data.moveCount + 1 };
     user2.userData = { moveCount: user2Data.moveCount + 1 };
 
-    // Check for special outcomes after 5 moves for both users
     if (user1Data.moveCount >= 5 && user2Data.moveCount >= 5) {
-      const specialOutcome = specialOutcomes[Math.floor(Math.random() * specialOutcomes.length)];
-      `${introduction} ${user} and ${target} ${specialOutcome} And your winner is... $(user1) (or $(user2))!`;
+        const specialOutcome = specialOutcomes[Math.floor(Math.random() * specialOutcomes.length)];
+        console.log(`Special Outcome: ${specialOutcome}`);
+        `${introduction} ${user} and ${target} ${specialOutcome} And your winner is... $(user1) (or $(user2))!`;
     } else {
-      const move1 = moves[Math.floor(Math.random() * moves.length)];
-      const outcome1 = outcomes[Math.floor(Math.random() * outcomes.length)];
+        const move1 = moves[Math.floor(Math.random() * moves.length)];
+        const outcome1 = outcomes[Math.floor(Math.random() * outcomes.length)];
+        const move2 = moves[Math.floor(Math.random() * moves.length)];
+        const outcome2 = outcomes[Math.floor(Math.random() * outcomes.length)];
 
-      const move2 = moves[Math.floor(Math.random() * moves.length)];
-      const outcome2 = outcomes[Math.floor(Math.random() * outcomes.length)];
+        console.log(`Move 1: ${move1}, Outcome 1: ${outcome1}`);
+        console.log(`Move 2: ${move2}, Outcome 2: ${outcome2}`);
 
-      `${introduction} ${user} ${move1} ${outcome1} ${target} ${move2} ${outcome2} Bell rings! And your winner is... $(user1) (or $(user2))!`;
+        `${introduction} ${user} ${move1} ${outcome1} ${target} ${move2} ${outcome2} Bell rings! And your winner is... $(user1) (or $(user2))!`;
     }
-  } else {
-    // If target has left, announce and award the win
+} else {
+    console.log(`${target} has had enough and left the ring! Your winner by count out, $(user)`);
     `${target} has had enough and left the ring! Your winner by count out, $(user)`;
-  }
+}
 )
+
