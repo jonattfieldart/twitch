@@ -1,5 +1,6 @@
 !wrestle $(eval
-  const moves = [
+const moves = [
+
     "Executed a powerful Body Slam, lifting their opponent high in the air before slamming them forcefully to the mat",
     "Successfully performed a Suplex, grasping their opponent and throwing them backward, letting gravity do the rest",
     "delivered a devastating DDT, grabbing their opponent's head and swiftly dropping them headfirst into the canvas",
@@ -8,7 +9,7 @@
     "Demonstrated strength by hoisting their opponent onto their shoulders and executing a Powerbomb, slamming them backward with impactful force",
     "Showcased wrestling prowess with a German Suplex, locking their arms around their opponent and throwing them over with a powerful bridge",  
     "Gripped their opponent's throat with authority, delivering a successful Chokeslam and lifting them off the ground before crashing them down",
-    "Successfully executed a daring Piledriver, turning their opponent upside down and driving their head into the mat"
+    "Successfully executed a daring Piledriver, turning their opponent upside down and driving their head into the mat",
     "Targeted their opponent's spine with precision, lifting and slamming them down with a Spinebuster, impacting their back on their knee",
     "Skillfully performed a Hurricanrana, wrapping their legs around their opponent's neck and using their body weight to flip them over",
     "Connected with the back of their opponent's head using an Enzuigiri, showcasing agility and surprising them",
